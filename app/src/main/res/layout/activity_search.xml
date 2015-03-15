@@ -1,0 +1,237 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.scry.Search" >
+
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/search_textfield_hint"
+        android:imeOptions="actionSend"
+        android:inputType="textUri" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <CheckBox
+            android:id="@+id/search_name_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/search_name_checkbox_text" />
+
+        <CheckBox
+            android:id="@+id/search_types_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/search_types_checkbox_text" />
+
+        <CheckBox
+            android:id="@+id/search_rules_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/search_rules_checkbox_text" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <ImageButton
+            android:id="@+id/ib_colour_w"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/search_colour_w_content"
+            android:onClick="onSearchToggleButtonDown"
+            android:src="@drawable/mana_symbol_w_small" />
+
+        <ImageButton
+            android:id="@+id/ib_colour_u"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/search_colour_u_content"
+            android:onClick="onSearchToggleButtonDown"
+            android:src="@drawable/mana_symbol_u_small" />
+
+        <ImageButton
+            android:id="@+id/ib_colour_b"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/search_colour_b_content"
+            android:onClick="onSearchToggleButtonDown"
+            android:src="@drawable/mana_symbol_b_small" />
+
+        <ImageButton
+            android:id="@+id/ib_colour_r"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/search_colour_r_content"
+            android:onClick="onSearchToggleButtonDown"
+            android:src="@drawable/mana_symbol_r_small" />
+
+        <ImageButton
+            android:id="@+id/ib_colour_g"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/search_colour_g_content"
+            android:onClick="onSearchToggleButtonDown"
+            android:src="@drawable/mana_symbol_g_small" />
+
+        <ImageButton
+            android:id="@+id/ib_colour_c"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/search_colour_c_content"
+            android:onClick="onSearchToggleButtonDown"
+            android:src="@drawable/mana_symbol_c_small" />
+    </LinearLayout>
+
+    <CheckBox
+        android:id="@+id/search_match_colours_checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/search_match_colours_text" />
+
+    <CheckBox
+        android:id="@+id/search_exclude_colour_checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/search_exclude_colour_text" />
+
+    <CheckBox
+        android:id="@+id/search_multi_only_checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/search_multi_only_text" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <ImageButton
+            android:id="@+id/type_creature_imagebutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/search_type_creature_content"
+            android:src="@drawable/type_creature_small"
+            android:onClick="onSearchToggleButtonDown" />
+
+        <ImageButton
+            android:id="@+id/type_artifact_imagebutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/search_type_artifact_content"
+            android:src="@drawable/type_artifact_small"
+            android:onClick="onSearchToggleButtonDown" />
+
+        <ImageButton
+            android:id="@+id/type_enchantment_imagebutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/search_type_enchantment_content"
+            android:src="@drawable/type_enchantment_small" 
+            android:onClick="onSearchToggleButtonDown"/>
+
+        <ImageButton
+            android:id="@+id/type_instant_imagebutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/search_type_instant_content"
+            android:src="@drawable/type_instant_small"
+            android:onClick="onSearchToggleButtonDown" />
+
+        <ImageButton
+            android:id="@+id/type_sorcery_imagebutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/search_type_sorcery_content"
+            android:src="@drawable/type_sorcery_small"
+            android:onClick="onSearchToggleButtonDown" />
+
+        <ImageButton
+            android:id="@+id/type_land_imagebutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/search_type_land_content"
+            android:src="@drawable/type_land_small"
+            android:onClick="onSearchToggleButtonDown" />
+
+        <ImageButton
+            android:id="@+id/type_planeswalker_imagebutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/search_type_planeswalker_content"
+            android:src="@drawable/type_planeswalker_small"
+            android:onClick="onSearchToggleButtonDown" />
+
+    </LinearLayout>
+
+    <Spinner
+        android:id="@+id/search_set_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:spinnerMode="dialog" />
+    
+    <RadioGroup 
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="horizontal">
+	    <RadioButton
+	        android:id="@+id/search_ownership_radio_all"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="@string/search_ownership_all_text"
+	        android:onClick="onOwnershipRadioClick" />
+	
+	    <RadioButton
+	        android:id="@+id/search_ownership_radio_owned"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="@string/search_ownership_owned_text" 
+	        android:onClick="onOwnershipRadioClick"/>
+	
+	    <RadioButton
+	        android:id="@+id/search_ownership_radio_not_owned"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="@string/search_ownership_not_owned_text" 
+	        android:onClick="onOwnershipRadioClick" />
+	</RadioGroup>
+    <Button
+        android:id="@+id/button_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/search_go_button"
+        android:onClick="onSearchButtonDown" />
+
+    <Button
+        android:id="@+id/button_reset"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onResetButtonDown"
+        android:text="@string/search_reset_button" />
+
+</LinearLayout>

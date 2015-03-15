@@ -1,0 +1,1 @@
+call php -q C:\wamp\www\delverdb\xmlconverter.php > oracle.xml

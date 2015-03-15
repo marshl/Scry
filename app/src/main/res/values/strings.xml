@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Scry</string>
+    <string name="action_settings">Settings</string>
+    <string name="search_name_field_default">Card Name</string>
+    <string name="search_go_button">Search</string>
+    <string name="search_reset_button">Reset</string>
+    <string name="search_colour_w_content">W</string>
+    <string name="search_colour_u_content">U</string>
+    <string name="search_colour_b_content">B</string>
+    <string name="search_colour_r_content">R</string>
+    <string name="search_colour_g_content">G</string>
+    <string name="search_colour_c_content">C</string>
+    <string name="search_type_creature_content">Creature</string>
+    <string name="search_type_artifact_content">Artifact</string>
+    <string name="search_type_enchantment_content">Enchantment</string>
+    <string name="search_type_instant_content">Instant</string>
+    <string name="search_type_sorcery_content">Sorcery</string>
+    <string name="search_type_land_content">Land</string>
+    <string name="search_type_planeswalker_content">Planeswalker</string>
+    <string name="search_name_checkbox_text">Name</string>
+    <string name="search_types_checkbox_text">Types</string>
+    <string name="search_rules_checkbox_text">Rules</string>
+    <string name="title_activity_results">Results</string>
+    <string name="search_match_colours_text">Match colours exactly</string>
+    <string name="search_exclude_colour_text">Exclude unselected colours</string>
+    <string name="search_multi_only_text">Multicoloured cards only</string>
+    <string name="results_group_card_name_default">[Name]</string>
+    <string name="results_group_card_cost_default">[Cost]</string>
+    <string name="results_child_pow_tough_default">[P/T(L)]</string>
+    <string name="results_child_rules_default">[Rules]</string>
+    <string name="results_child_type_default">[Type - Subtype]</string>
+    <string name="results_child_total_default">[total]</string>
+    <string name="results_child_sets_default">[Sets]</string>
+    <string name="results_search_info_default">[Search information]</string>
+    <string name="search_mine_only_text">My Cards Only</string>
+    <string name="results_child_link_default">[Links]</string>
+    <string name="results_child_watermark_default">[Watermark]</string>
+    <string name="search_ownership_all_text">All</string>
+    <string name="search_ownership_owned_text">Owned</string>
+    <string name="search_ownership_not_owned_text">Not Owned</string>
+    <string name="search_textfield_hint">Type Here...</string>
+
+</resources>

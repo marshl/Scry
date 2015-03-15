@@ -1,0 +1,6 @@
+syntax: glob
+*.png
+app\build\outputs\apk\app-debug-unaligned.apk
+app/build/
+.gradle/
+.idea/
