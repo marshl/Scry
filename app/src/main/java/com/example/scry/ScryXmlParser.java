@@ -135,14 +135,6 @@ public class ScryXmlParser
 			{
 				this.readCardSets( _parser, card );
 			}
-			/*else if ( name.equals( "ci" ) )
-			{
-				card.colourID = Integer.parseInt( this.readText( _parser ) );
-			}*/
-			else if ( name.equals( "rt" ) )
-			{
-				card.rating = Float.parseFloat( this.readText( _parser ) );
-			}
 			else if ( name.equals( "wm" ) )
 			{
 				card.watermark = this.readText( _parser );

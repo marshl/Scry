@@ -114,11 +114,6 @@ public class ResultsExpandableAdapter extends BaseExpandableListAdapter
 			textView.setText( Html.fromHtml( strBldr.toString(), this.scryImageGetter, null ) );
 		}
 		
-		{ // Rating
-			RatingBar ratingBar = (RatingBar)_convertView.findViewById( R.id.results_child_rating );
-			ratingBar.setRating( oracleCard.rating );
-		}
-		
 		{ // Card link
 			textView = (TextView)_convertView.findViewById( R.id.results_child_link );
 			strBldr = null;

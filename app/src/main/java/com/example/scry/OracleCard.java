@@ -25,7 +25,6 @@ public class OracleCard implements Comparable<Object>
 	
 	public int total = 0;
 	public ArrayList<CardSet> sets = new ArrayList<CardSet>();
-	public float rating;
 	public String watermark;
 	public String handmod;
 	public String lifemod;
