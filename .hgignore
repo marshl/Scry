@@ -4,3 +4,5 @@ app\build\outputs\apk\app-debug-unaligned.apk
 app/build/
 .gradle/
 .idea/
+app\src\main\assets\xml\oracle.xml
+app\src\main\assets\xml\setlist.xml
