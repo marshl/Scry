@@ -6,3 +6,4 @@ app/build/
 .idea/
 app\src\main\assets\xml\oracle.xml
 app\src\main\assets\xml\setlist.xml
+*.bin
