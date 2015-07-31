@@ -1,14 +1,17 @@
 package com.example.scry;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnLongClickListener;
 import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -58,14 +61,14 @@ public class Search extends Activity
 		setSpinner.setOnItemSelectedListener( new SetListItemSelectedListener() );
 		
 		// Start searching when the user presses Go in the text field
-		EditText editText = (EditText) findViewById( R.id.editText1 );
+		EditText editText = (EditText) findViewById( R.id.searchEditText );
 		editText.setOnEditorActionListener( new OnEditorActionListener()
 		{
 		    @Override
 		    public boolean onEditorAction( TextView v, int actionId, KeyEvent event)
 		    {
 		        boolean handled = false;
-		        if ( actionId == EditorInfo.IME_ACTION_SEND )
+		        if ( actionId == EditorInfo.IME_ACTION_SEARCH )
 		        {
 		        	onSearchButtonDown( null );
 		        	handled = true;
@@ -115,6 +118,25 @@ public class Search extends Activity
 		}
 		return super.onOptionsItemSelected( item );
 	}
+
+    /*@Override
+    public void onResume()
+    {
+        super.onResume();
+        EditText editText = (EditText)findViewById( R.id.searchEditText );
+        editText.setOnFocusChangeListener( new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View _view, boolean _b) {
+                if ( _b )
+                {
+                    InputMethodManager inputMgr = (InputMethodManager)getSystemService( Context.INPUT_METHOD_SERVICE );
+                    inputMgr.showSoftInput( _view, 0 );
+                    getWindow().setSoftInputMode( LayoutParams.SOFT_INPUT_STATE_VISIBLE );
+                }
+            }
+        });
+        editText.requestFocus();
+    }*/
 	
 	public void onSearchButtonDown( View _view )
 	{
@@ -123,7 +145,7 @@ public class Search extends Activity
 			return;
 		}
 		
-		EditText editText = (EditText) this.findViewById( R.id.editText1 );
+		EditText editText = (EditText) this.findViewById( R.id.searchEditText );
 		ScryApplication.instance.searchString = editText.getText().toString();
 
 		final CheckBox nameCheckbox = (CheckBox)this.findViewById( R.id.search_name_checkbox );
@@ -165,7 +187,7 @@ public class Search extends Activity
 	
 	private void applySearchSettings()
 	{
-		final EditText editText = (EditText) this.findViewById( R.id.editText1 );
+		final EditText editText = (EditText) this.findViewById( R.id.searchEditText );
 		editText.setText( ScryApplication.instance.searchString );
 
 		final CheckBox nameCheckbox = (CheckBox)this.findViewById( R.id.search_name_checkbox );

@@ -230,18 +230,18 @@ public class ScryApplication
 			}
 		}
 		
-		if ( this.searchString != null && this.searchString.length() > 0 )
+		if ( this.searchString != null && !this.searchString.isEmpty() )
 		{
 			boolean textMatch = false;
-			if ( isSearchingName && _card.name.toLowerCase().contains( this.searchString ) )
+			if ( this.isSearchingName && _card.name.toLowerCase().contains( this.searchString ) )
 			{
 				textMatch = true;
 			}
 			
 			if ( !textMatch && this.isSearchingType )
 			{
-				boolean inType =    _card.type != null    && _card.type.toLowerCase().contains( searchString );
-				boolean inSubtype = _card.subtype != null && _card.subtype.toLowerCase().contains( searchString );
+				boolean inType = _card.type != null && _card.type.toLowerCase().contains( this.searchString );
+				boolean inSubtype = _card.subtype != null && _card.subtype.toLowerCase().contains( this.searchString );
 				 
 				if ( inType || inSubtype )
 				{
