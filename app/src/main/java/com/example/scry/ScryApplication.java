@@ -249,7 +249,7 @@ public class ScryApplication
 				}
 			}
 			
-			if ( !textMatch && this.isSearchingRules && _card.rules.toLowerCase().contains( searchString ) )
+			if ( !textMatch && this.isSearchingRules && _card.rules != null && _card.rules.toLowerCase().contains( searchString ) )
 			{
 				textMatch = true;
 			}
