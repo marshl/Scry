@@ -1,17 +1,14 @@
 package com.example.scry;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnLongClickListener;
 import android.view.inputmethod.EditorInfo;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -118,25 +115,6 @@ public class Search extends Activity
 		}
 		return super.onOptionsItemSelected( item );
 	}
-
-    /*@Override
-    public void onResume()
-    {
-        super.onResume();
-        EditText editText = (EditText)findViewById( R.id.searchEditText );
-        editText.setOnFocusChangeListener( new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View _view, boolean _b) {
-                if ( _b )
-                {
-                    InputMethodManager inputMgr = (InputMethodManager)getSystemService( Context.INPUT_METHOD_SERVICE );
-                    inputMgr.showSoftInput( _view, 0 );
-                    getWindow().setSoftInputMode( LayoutParams.SOFT_INPUT_STATE_VISIBLE );
-                }
-            }
-        });
-        editText.requestFocus();
-    }*/
 	
 	public void onSearchButtonDown( View _view )
 	{
