@@ -7,3 +7,4 @@ app/build/
 *.bin
 app/src/main/assets/xml/oracle.xml
 app/src/main/assets/xml/setlist.xml
+build/
