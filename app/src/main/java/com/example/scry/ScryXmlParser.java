@@ -116,11 +116,11 @@ public class ScryXmlParser
 			}
 			else if ( name.equals( "npw" ) )
 			{
-				card.numpower = Integer.parseInt( this.readText( _parser ) );
+				card.numpower = Float.parseFloat( this.readText( _parser ) );
 			}
 			else if ( name.equals( "ntf" ) )
 			{
-				card.numtoughness = Integer.parseInt( this.readText( _parser ) );
+				card.numtoughness = Float.parseFloat( this.readText( _parser ) );
 			}
 			else if ( name.equals( "ly" ) )
 			{
@@ -164,11 +164,12 @@ public class ScryXmlParser
 		// ( Numerical P/T is only included on cards with symbols in their string version )
 		if ( card.toughness != null && card.numtoughness == null )
 		{
-			card.numtoughness = Integer.parseInt( card.toughness );
+			card.numtoughness = Float.parseFloat( card.toughness );
 		}
+
 		if ( card.power != null && card.numpower == null )
 		{
-			card.numpower = Integer.parseInt( card.power );
+			card.numpower = Float.parseFloat( card.power );
 		}
 		
 		ScryApplication.instance.AddCard( card );

@@ -17,8 +17,8 @@ public class OracleCard implements Comparable<Object>
 	public String subtype = null;
 	public String power = null;
 	public String toughness = null;
-	public Integer numtoughness = null;
-	public Integer numpower = null;
+	public Float numtoughness = null;
+	public Float numpower = null;
 	public String loyalty;
 	
 	public String rules = null;
