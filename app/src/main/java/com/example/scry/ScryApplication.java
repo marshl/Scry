@@ -6,307 +6,273 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ScryApplication
-{
-	public static ScryApplication instance;
+public class ScryApplication {
+    public static ScryApplication instance;
 
-	public class ToggleField
-	{
-		public ToggleField( int _resourceID )
-		{
-			this.resourceID = _resourceID;
-		}
-		public int resourceID = -1;
-		public boolean bool = true;
-	}
+    public class ToggleField {
+        public ToggleField(int _resourceID) {
+            this.resourceID = _resourceID;
+        }
 
-	public String searchString;
+        public int resourceID = -1;
+        public boolean bool = true;
+    }
 
-	public boolean isSearchingName = true;
-	public boolean isSearchingType = false;
-	public boolean isSearchingRules = false;
+    public String searchString;
 
-	private boolean searchWhite = true;
-	private boolean searchBlue = true;
-	private boolean searchBlack = true;
-	private boolean searchRed = true;
-	private boolean searchGreen = true;
-	private boolean searchColourless = true;
+    public boolean isSearchingName = true;
+    public boolean isSearchingType = false;
+    public boolean isSearchingRules = false;
 
-	public boolean matchColoursExactly = false;
-	public boolean excludeUnselectedColours = false;
-	public boolean multicolouredOnly = false;
+    private boolean searchWhite = true;
+    private boolean searchBlue = true;
+    private boolean searchBlack = true;
+    private boolean searchRed = true;
+    private boolean searchGreen = true;
+    private boolean searchColourless = true;
 
-	private int searchColourFlags;
+    public boolean matchColoursExactly = false;
+    public boolean excludeUnselectedColours = false;
+    public boolean multicolouredOnly = false;
 
-	private boolean searchAllColours;
+    private int searchColourFlags;
 
-	public enum TYPE
-	{
-		CREATURE,
-		ARTIFACT,
-		ENCHANTMENT,
-		INSTANT,
-		SORCERY,
-		LAND,
-		PLANESWALKER,
-	}
+    private boolean searchAllColours;
 
-	public enum COLOUR
-	{
-		WHITE,
-		BLUE,
-		BLACK,
-		RED,
-		GREEN,
-		COLOURLESS,
-	}
+    public enum TYPE {
+        CREATURE,
+        ARTIFACT,
+        ENCHANTMENT,
+        INSTANT,
+        SORCERY,
+        LAND,
+        PLANESWALKER,
+    }
 
-	public HashMap<TYPE, ToggleField> typeSearchFlags;
+    public enum COLOUR {
+        WHITE,
+        BLUE,
+        BLACK,
+        RED,
+        GREEN,
+        COLOURLESS,
+    }
 
-	public SparseArray<ToggleField> toggleButtonMap;
-	public HashMap<COLOUR, ToggleField> colourSearchFlags;
+    public HashMap<TYPE, ToggleField> typeSearchFlags;
 
-	private boolean searchTypeCreature = true;
-	private boolean searchTypeArtifact = true;
-	private boolean searchTypeEnchantment = true;
-	private boolean searchTypeInstant = true;
-	private boolean searchTypeSorcery = true;
-	private boolean searchTypeLand = true;
-	private boolean searchTypePlaneswalker = true;
+    public SparseArray<ToggleField> toggleButtonMap;
+    public HashMap<COLOUR, ToggleField> colourSearchFlags;
 
-	public int selectedSetIndex;
-	private ScrySet searchSet = null;
+    private boolean searchTypeCreature = true;
+    private boolean searchTypeArtifact = true;
+    private boolean searchTypeEnchantment = true;
+    private boolean searchTypeInstant = true;
+    private boolean searchTypeSorcery = true;
+    private boolean searchTypeLand = true;
+    private boolean searchTypePlaneswalker = true;
 
-	private boolean searchAllTypes;
+    public int selectedSetIndex;
+    private ScrySet searchSet = null;
 
-	public HashMap<Integer, OracleCard> cardMap;
+    private boolean searchAllTypes;
 
-	public ArrayList<OracleCard> searchResults;
+    public HashMap<Integer, OracleCard> cardMap;
 
-	public ArrayList<ScrySet> setList;
-	public ArrayList<ScryFormat> formatList;
+    public ArrayList<OracleCard> searchResults;
 
-	public enum OWNERSHIP
-	{
-		ALL,
-		OWNED,
-		NOT_OWNED,
-	}
-	public OWNERSHIP ownershipSearch = OWNERSHIP.ALL;
+    public ArrayList<ScrySet> setList;
+    public ArrayList<ScryFormat> formatList;
 
-	public boolean isInitialised = false;
+    public enum OWNERSHIP {
+        ALL,
+        OWNED,
+        NOT_OWNED,
+    }
 
-	public ScryApplication()
-	{
-		instance = this;
+    public OWNERSHIP ownershipSearch = OWNERSHIP.ALL;
 
-		this.typeSearchFlags = new HashMap<TYPE, ToggleField>();
-		this.typeSearchFlags.put( TYPE.CREATURE, new ToggleField( R.id.type_creature_imagebutton ) );
-		this.typeSearchFlags.put( TYPE.ARTIFACT, new ToggleField( R.id.type_artifact_imagebutton ) );
-		this.typeSearchFlags.put( TYPE.ENCHANTMENT, new ToggleField( R.id.type_enchantment_imagebutton ) );
-		this.typeSearchFlags.put( TYPE.INSTANT, new ToggleField( R.id.type_instant_imagebutton ) );
-		this.typeSearchFlags.put( TYPE.SORCERY, new ToggleField( R.id.type_sorcery_imagebutton ) );
-		this.typeSearchFlags.put( TYPE.LAND, new ToggleField( R.id.type_land_imagebutton ) );
-		this.typeSearchFlags.put( TYPE.PLANESWALKER, new ToggleField( R.id.type_planeswalker_imagebutton ) );
+    public boolean isInitialised = false;
 
-		this.colourSearchFlags = new HashMap<COLOUR, ToggleField>();
-		this.colourSearchFlags.put( COLOUR.WHITE, new ToggleField( R.id.ib_colour_w ) );
-		this.colourSearchFlags.put( COLOUR.BLUE, new ToggleField( R.id.ib_colour_u ) );
-		this.colourSearchFlags.put( COLOUR.BLACK, new ToggleField( R.id.ib_colour_b ) );
-		this.colourSearchFlags.put( COLOUR.RED, new ToggleField( R.id.ib_colour_r ) );
-		this.colourSearchFlags.put( COLOUR.GREEN, new ToggleField( R.id.ib_colour_g ) );
-		this.colourSearchFlags.put( COLOUR.COLOURLESS, new ToggleField( R.id.ib_colour_c ) );
+    public ScryApplication() {
+        instance = this;
 
-		this.toggleButtonMap = new SparseArray<ToggleField>();
-		for( Map.Entry<TYPE, ToggleField> entry : this.typeSearchFlags.entrySet() )
-		{
-			toggleButtonMap.put( entry.getValue().resourceID, entry.getValue() );
-		}
-		for ( Map.Entry<COLOUR, ToggleField> entry : this.colourSearchFlags.entrySet() )
-		{
-			this.toggleButtonMap.put( entry.getValue().resourceID, entry.getValue() );
-		}
+        this.typeSearchFlags = new HashMap<TYPE, ToggleField>();
+        this.typeSearchFlags.put(TYPE.CREATURE, new ToggleField(R.id.type_creature_imagebutton));
+        this.typeSearchFlags.put(TYPE.ARTIFACT, new ToggleField(R.id.type_artifact_imagebutton));
+        this.typeSearchFlags.put(TYPE.ENCHANTMENT, new ToggleField(R.id.type_enchantment_imagebutton));
+        this.typeSearchFlags.put(TYPE.INSTANT, new ToggleField(R.id.type_instant_imagebutton));
+        this.typeSearchFlags.put(TYPE.SORCERY, new ToggleField(R.id.type_sorcery_imagebutton));
+        this.typeSearchFlags.put(TYPE.LAND, new ToggleField(R.id.type_land_imagebutton));
+        this.typeSearchFlags.put(TYPE.PLANESWALKER, new ToggleField(R.id.type_planeswalker_imagebutton));
 
-		this.cardMap = new HashMap<Integer, OracleCard>();
-	}
+        this.colourSearchFlags = new HashMap<COLOUR, ToggleField>();
+        this.colourSearchFlags.put(COLOUR.WHITE, new ToggleField(R.id.ib_colour_w));
+        this.colourSearchFlags.put(COLOUR.BLUE, new ToggleField(R.id.ib_colour_u));
+        this.colourSearchFlags.put(COLOUR.BLACK, new ToggleField(R.id.ib_colour_b));
+        this.colourSearchFlags.put(COLOUR.RED, new ToggleField(R.id.ib_colour_r));
+        this.colourSearchFlags.put(COLOUR.GREEN, new ToggleField(R.id.ib_colour_g));
+        this.colourSearchFlags.put(COLOUR.COLOURLESS, new ToggleField(R.id.ib_colour_c));
 
-	public void AddCard( OracleCard _card )
-	{
-		cardMap.put( _card.id, _card );
-	}
+        this.toggleButtonMap = new SparseArray<ToggleField>();
+        for (Map.Entry<TYPE, ToggleField> entry : this.typeSearchFlags.entrySet()) {
+            toggleButtonMap.put(entry.getValue().resourceID, entry.getValue());
+        }
+        for (Map.Entry<COLOUR, ToggleField> entry : this.colourSearchFlags.entrySet()) {
+            this.toggleButtonMap.put(entry.getValue().resourceID, entry.getValue());
+        }
 
-	public void Search()
-	{
-		this.searchTypeCreature = this.typeSearchFlags.get( TYPE.CREATURE ).bool;
-		this.searchTypeArtifact = this.typeSearchFlags.get( TYPE.ARTIFACT ).bool;
-		this.searchTypeEnchantment = this.typeSearchFlags.get( TYPE.ENCHANTMENT ).bool;
-		this.searchTypeInstant = this.typeSearchFlags.get( TYPE.INSTANT ).bool;
-		this.searchTypeSorcery = this.typeSearchFlags.get( TYPE.SORCERY ).bool;
-		this.searchTypeLand = this.typeSearchFlags.get( TYPE.LAND ).bool;
-		this.searchTypePlaneswalker = this.typeSearchFlags.get( TYPE.PLANESWALKER ).bool;
+        this.cardMap = new HashMap<Integer, OracleCard>();
+    }
 
-		this.searchAllTypes = this.searchTypeCreature && this.searchTypeArtifact && this.searchTypeEnchantment
-			&& this.searchTypeInstant && this.searchTypeSorcery && this.searchTypeLand && this.searchTypePlaneswalker;
+    public void AddCard(OracleCard _card) {
+        cardMap.put(_card.id, _card);
+    }
 
-		this.searchWhite = this.colourSearchFlags.get( COLOUR.WHITE ).bool;
-		this.searchBlue = this.colourSearchFlags.get( COLOUR.BLUE ).bool;
-		this.searchBlack = this.colourSearchFlags.get( COLOUR.BLACK ).bool;
-		this.searchRed = this.colourSearchFlags.get( COLOUR.RED ).bool;
-		this.searchGreen = this.colourSearchFlags.get( COLOUR.GREEN ).bool;
-		this.searchColourless = this.colourSearchFlags.get( COLOUR.COLOURLESS ).bool;
+    public void Search() {
+        this.searchTypeCreature = this.typeSearchFlags.get(TYPE.CREATURE).bool;
+        this.searchTypeArtifact = this.typeSearchFlags.get(TYPE.ARTIFACT).bool;
+        this.searchTypeEnchantment = this.typeSearchFlags.get(TYPE.ENCHANTMENT).bool;
+        this.searchTypeInstant = this.typeSearchFlags.get(TYPE.INSTANT).bool;
+        this.searchTypeSorcery = this.typeSearchFlags.get(TYPE.SORCERY).bool;
+        this.searchTypeLand = this.typeSearchFlags.get(TYPE.LAND).bool;
+        this.searchTypePlaneswalker = this.typeSearchFlags.get(TYPE.PLANESWALKER).bool;
 
-		this.searchAllColours = searchWhite && searchBlue && searchBlack && searchRed && searchGreen && searchColourless;
+        this.searchAllTypes = this.searchTypeCreature && this.searchTypeArtifact && this.searchTypeEnchantment
+                && this.searchTypeInstant && this.searchTypeSorcery && this.searchTypeLand && this.searchTypePlaneswalker;
 
-		this.searchColourFlags = 0;
-		this.searchColourFlags += this.searchWhite ? 1 : 0;
-		this.searchColourFlags += this.searchBlue ? 2 : 0;
-		this.searchColourFlags += this.searchBlack ? 4 : 0;
-		this.searchColourFlags += this.searchRed ? 8 : 0;
-		this.searchColourFlags += this.searchGreen ? 16 : 0;
+        this.searchWhite = this.colourSearchFlags.get(COLOUR.WHITE).bool;
+        this.searchBlue = this.colourSearchFlags.get(COLOUR.BLUE).bool;
+        this.searchBlack = this.colourSearchFlags.get(COLOUR.BLACK).bool;
+        this.searchRed = this.colourSearchFlags.get(COLOUR.RED).bool;
+        this.searchGreen = this.colourSearchFlags.get(COLOUR.GREEN).bool;
+        this.searchColourless = this.colourSearchFlags.get(COLOUR.COLOURLESS).bool;
 
-		this.searchString = this.searchString.toLowerCase();
+        this.searchAllColours = searchWhite && searchBlue && searchBlack && searchRed && searchGreen && searchColourless;
 
-		this.searchSet = this.selectedSetIndex > 0 ? this.setList.get( this.selectedSetIndex - 1 ) : null;
+        this.searchColourFlags = 0;
+        this.searchColourFlags += this.searchWhite ? 1 : 0;
+        this.searchColourFlags += this.searchBlue ? 2 : 0;
+        this.searchColourFlags += this.searchBlack ? 4 : 0;
+        this.searchColourFlags += this.searchRed ? 8 : 0;
+        this.searchColourFlags += this.searchGreen ? 16 : 0;
 
-		this.searchResults = new ArrayList<OracleCard>();
-		for ( HashMap.Entry<Integer, OracleCard> card : cardMap.entrySet() )
-		{
-		    if ( this.CardMatch( card.getValue() ) )
-		    {
-		    	this.searchResults.add( card.getValue() );
-		    }
-		}
+        this.searchString = this.searchString.toLowerCase();
 
-		java.util.Collections.sort( this.searchResults );
-	}
+        this.searchSet = this.selectedSetIndex > 0 ? this.setList.get(this.selectedSetIndex - 1) : null;
 
-	public boolean CardMatch( OracleCard _card )
-	{
-		if ( !this.searchAllColours && ( ( _card.colour & this.searchColourFlags ) == 0
-				                    && !( _card.colour == 0 && this.searchColourless ) ) )
-		{
-			return false;
-		}
+        this.searchResults = new ArrayList<OracleCard>();
+        for (HashMap.Entry<Integer, OracleCard> card : cardMap.entrySet()) {
+            if (this.CardMatch(card.getValue())) {
+                this.searchResults.add(card.getValue());
+            }
+        }
 
-		if ( this.matchColoursExactly )
-		{
-			if ( _card.colour != this.searchColourFlags )
-			{
-				return false;
-			}
-		}
+        java.util.Collections.sort(this.searchResults);
+    }
 
-		if ( this.excludeUnselectedColours && !this.searchAllColours )
-		{
-			if ( ( _card.colour & ~this.searchColourFlags ) != 0 )
-			{
-				return false;
-			}
-		}
+    public boolean CardMatch(OracleCard _card) {
+        if (!this.searchAllColours && ((_card.colour & this.searchColourFlags) == 0
+                && !(_card.colour == 0 && this.searchColourless))) {
+            return false;
+        }
 
-		if ( this.multicolouredOnly &&_card.numColours < 2 )
-		{
-			return false;
-		}
+        if (this.matchColoursExactly) {
+            if (_card.colour != this.searchColourFlags) {
+                return false;
+            }
+        }
+
+        if (this.excludeUnselectedColours && !this.searchAllColours) {
+            if ((_card.colour & ~this.searchColourFlags) != 0) {
+                return false;
+            }
+        }
+
+        if (this.multicolouredOnly && _card.numColours < 2) {
+            return false;
+        }
 
 
-		if ( !this.searchAllTypes )
-		{
-			if ( ( !this.searchTypeCreature || !_card.type.contains( "Creature" ) )
-			  && ( !this.searchTypeArtifact || !_card.type.contains( "Artifact" ) )
-			  && ( !this.searchTypeEnchantment || !_card.type.contains( "Enchantment" ) )
-			  && ( !this.searchTypeInstant || !_card.type.contains( "Instant" ) )
-			  && ( !this.searchTypeSorcery || !_card.type.contains( "Sorcery" ) )
-			  && ( !this.searchTypeLand || !_card.type.contains( "Land" ) )
-			  && ( !this.searchTypePlaneswalker || !_card.type.contains( "Planeswalker" ) ) )
-			{
-				return false;
-			}
-		}
+        if (!this.searchAllTypes) {
+            if ((!this.searchTypeCreature || !_card.type.contains("Creature"))
+                    && (!this.searchTypeArtifact || !_card.type.contains("Artifact"))
+                    && (!this.searchTypeEnchantment || !_card.type.contains("Enchantment"))
+                    && (!this.searchTypeInstant || !_card.type.contains("Instant"))
+                    && (!this.searchTypeSorcery || !_card.type.contains("Sorcery"))
+                    && (!this.searchTypeLand || !_card.type.contains("Land"))
+                    && (!this.searchTypePlaneswalker || !_card.type.contains("Planeswalker"))) {
+                return false;
+            }
+        }
 
-		if ( this.searchString != null && !this.searchString.isEmpty() )
-		{
-			boolean textMatch = false;
-			if ( this.isSearchingName && _card.name.toLowerCase().contains( this.searchString ) )
-			{
-				textMatch = true;
-			}
+        if (this.searchString != null && !this.searchString.isEmpty()) {
+            boolean textMatch = false;
+            if (this.isSearchingName && _card.name.toLowerCase().contains(this.searchString)) {
+                textMatch = true;
+            }
 
-			if ( !textMatch && this.isSearchingType )
-			{
-				boolean inType = _card.type != null && _card.type.toLowerCase().contains( this.searchString );
-				boolean inSubtype = _card.subtype != null && _card.subtype.toLowerCase().contains( this.searchString );
+            if (!textMatch && this.isSearchingType) {
+                boolean inType = _card.type != null && _card.type.toLowerCase().contains(this.searchString);
+                boolean inSubtype = _card.subtype != null && _card.subtype.toLowerCase().contains(this.searchString);
 
-				if ( inType || inSubtype )
-				{
-					textMatch = true;
-				}
-			}
+                if (inType || inSubtype) {
+                    textMatch = true;
+                }
+            }
 
-			if ( !textMatch && this.isSearchingRules && _card.rules != null && _card.rules.toLowerCase().contains( searchString ) )
-			{
-				textMatch = true;
-			}
+            if (!textMatch && this.isSearchingRules && _card.rules != null && _card.rules.toLowerCase().contains(searchString)) {
+                textMatch = true;
+            }
 
-			if ( !textMatch )
-			{
-				return false;
-			}
-		}
+            if (!textMatch) {
+                return false;
+            }
+        }
 
-		if ( this.searchSet != null )
-		{
-			boolean inSet = false;
-			for ( CardSet set : _card.sets )
-			{
-				if ( set.setcode.equals( searchSet.setcode) )
-				{
-					inSet = true;
-					break;
-				}
-			}
+        if (this.searchSet != null) {
+            boolean inSet = false;
+            for (CardSet set : _card.sets) {
+                if (set.setcode.equals(searchSet.setcode)) {
+                    inSet = true;
+                    break;
+                }
+            }
 
-			if ( !inSet )
-			{
-				return false;
-			}
-		}
+            if (!inSet) {
+                return false;
+            }
+        }
 
-		if ( this.ownershipSearch == OWNERSHIP.OWNED && _card.total <= 0
-		  || this.ownershipSearch == OWNERSHIP.NOT_OWNED && _card.total > 0 )
-		{
-			return false;
-		}
+        if (this.ownershipSearch == OWNERSHIP.OWNED && _card.total <= 0
+                || this.ownershipSearch == OWNERSHIP.NOT_OWNED && _card.total > 0) {
+            return false;
+        }
 
-		return true;
-	}
+        return true;
+    }
 
-	public void Reset()
-	{
-		this.searchString = "";
+    public void Reset() {
+        this.searchString = "";
 
-		this.isSearchingName = true;
-		this.isSearchingType = false;
-		this.isSearchingRules = false;
+        this.isSearchingName = true;
+        this.isSearchingType = false;
+        this.isSearchingRules = false;
 
-		for ( COLOUR colour : COLOUR.values() )
-		{
-			this.colourSearchFlags.get( colour ).bool = true;
-		}
+        for (COLOUR colour : COLOUR.values()) {
+            this.colourSearchFlags.get(colour).bool = true;
+        }
 
-		this.matchColoursExactly = false;
-		this.excludeUnselectedColours = false;
-		this.multicolouredOnly = false;
+        this.matchColoursExactly = false;
+        this.excludeUnselectedColours = false;
+        this.multicolouredOnly = false;
 
-		for ( TYPE type : TYPE.values() )
-		{
-			this.typeSearchFlags.get( type ).bool = true;
-		}
+        for (TYPE type : TYPE.values()) {
+            this.typeSearchFlags.get(type).bool = true;
+        }
 
-		this.selectedSetIndex = 0;
-		this.searchSet = null;
+        this.selectedSetIndex = 0;
+        this.searchSet = null;
 
-		this.ownershipSearch = OWNERSHIP.ALL;
-	}
+        this.ownershipSearch = OWNERSHIP.ALL;
+    }
 }
