@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.scry.Search" >
+    tools:context="com.example.scry.Search">
 
     <EditText
         android:id="@+id/searchEditText"
@@ -16,11 +16,11 @@
         android:layout_height="wrap_content"
         android:hint="@string/search_textfield_hint"
         android:imeOptions="actionSearch"
-        android:singleLine="true"/>
+        android:singleLine="true" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content">
 
         <CheckBox
             android:id="@+id/search_name_checkbox"
@@ -45,7 +45,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content">
 
         <ImageButton
             android:id="@+id/ib_colour_w"
@@ -122,7 +122,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content">
 
         <ImageButton
             android:id="@+id/type_creature_imagebutton"
@@ -130,8 +130,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:contentDescription="@string/search_type_creature_content"
-            android:src="@drawable/type_creature_small"
-            android:onClick="onSearchToggleButtonDown" />
+            android:onClick="onSearchToggleButtonDown"
+            android:src="@drawable/type_creature_small" />
 
         <ImageButton
             android:id="@+id/type_artifact_imagebutton"
@@ -139,8 +139,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:contentDescription="@string/search_type_artifact_content"
-            android:src="@drawable/type_artifact_small"
-            android:onClick="onSearchToggleButtonDown" />
+            android:onClick="onSearchToggleButtonDown"
+            android:src="@drawable/type_artifact_small" />
 
         <ImageButton
             android:id="@+id/type_enchantment_imagebutton"
@@ -148,8 +148,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:contentDescription="@string/search_type_enchantment_content"
-            android:src="@drawable/type_enchantment_small" 
-            android:onClick="onSearchToggleButtonDown"/>
+            android:onClick="onSearchToggleButtonDown"
+            android:src="@drawable/type_enchantment_small" />
 
         <ImageButton
             android:id="@+id/type_instant_imagebutton"
@@ -157,8 +157,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:contentDescription="@string/search_type_instant_content"
-            android:src="@drawable/type_instant_small"
-            android:onClick="onSearchToggleButtonDown" />
+            android:onClick="onSearchToggleButtonDown"
+            android:src="@drawable/type_instant_small" />
 
         <ImageButton
             android:id="@+id/type_sorcery_imagebutton"
@@ -166,8 +166,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:contentDescription="@string/search_type_sorcery_content"
-            android:src="@drawable/type_sorcery_small"
-            android:onClick="onSearchToggleButtonDown" />
+            android:onClick="onSearchToggleButtonDown"
+            android:src="@drawable/type_sorcery_small" />
 
         <ImageButton
             android:id="@+id/type_land_imagebutton"
@@ -175,8 +175,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:contentDescription="@string/search_type_land_content"
-            android:src="@drawable/type_land_small"
-            android:onClick="onSearchToggleButtonDown" />
+            android:onClick="onSearchToggleButtonDown"
+            android:src="@drawable/type_land_small" />
 
         <ImageButton
             android:id="@+id/type_planeswalker_imagebutton"
@@ -184,8 +184,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:contentDescription="@string/search_type_planeswalker_content"
-            android:src="@drawable/type_planeswalker_small"
-            android:onClick="onSearchToggleButtonDown" />
+            android:onClick="onSearchToggleButtonDown"
+            android:src="@drawable/type_planeswalker_small" />
 
     </LinearLayout>
 
@@ -194,38 +194,40 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:spinnerMode="dialog" />
-    
-    <RadioGroup 
-	    android:layout_width="fill_parent"
-	    android:layout_height="wrap_content"
-	    android:orientation="horizontal">
-	    <RadioButton
-	        android:id="@+id/search_ownership_radio_all"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:text="@string/search_ownership_all_text"
-	        android:onClick="onOwnershipRadioClick" />
-	
-	    <RadioButton
-	        android:id="@+id/search_ownership_radio_owned"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:text="@string/search_ownership_owned_text" 
-	        android:onClick="onOwnershipRadioClick"/>
-	
-	    <RadioButton
-	        android:id="@+id/search_ownership_radio_not_owned"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:text="@string/search_ownership_not_owned_text" 
-	        android:onClick="onOwnershipRadioClick" />
-	</RadioGroup>
+
+    <RadioGroup
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/search_ownership_radio_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onOwnershipRadioClick"
+            android:text="@string/search_ownership_all_text" />
+
+        <RadioButton
+            android:id="@+id/search_ownership_radio_owned"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onOwnershipRadioClick"
+            android:text="@string/search_ownership_owned_text" />
+
+        <RadioButton
+            android:id="@+id/search_ownership_radio_not_owned"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onOwnershipRadioClick"
+            android:text="@string/search_ownership_not_owned_text" />
+    </RadioGroup>
+
     <Button
         android:id="@+id/button_search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/search_go_button"
-        android:onClick="onSearchButtonDown" />
+        android:onClick="onSearchButtonDown"
+        android:text="@string/search_go_button" />
 
     <Button
         android:id="@+id/button_reset"

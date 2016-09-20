@@ -4,8 +4,8 @@
     android:layout_height="match_parent"
     android:background="@drawable/results_name_background"
     android:orientation="horizontal"
-    android:padding="10dp" >
- 
+    android:padding="10dp">
+
     <TextView
         android:id="@+id/results_group_cardname"
         android:layout_width="wrap_content"
@@ -16,7 +16,7 @@
         android:text="@string/results_group_card_name_default"
         android:textColor="#ffffffff"
         android:textStyle="bold" />
-    
+
     <TextView
         android:id="@+id/results_group_cost"
         android:layout_width="wrap_content"
@@ -26,5 +26,5 @@
         android:text="@string/results_group_card_cost_default"
         android:textColor="#ffffffff"
         android:textStyle="bold" />
-    
+
 </LinearLayout>
