@@ -9,8 +9,6 @@ import android.widget.ExpandableListView;
 import android.widget.TextView;
 
 public class Results extends Activity {
-    private ExpandableListView expListView;
-    private ResultsExpandableAdapter resultsExpandableAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,9 +47,9 @@ public class Results extends Activity {
         view = this.findViewById(R.id.results_progress_bar);
         view.setVisibility(View.GONE);
 
-        this.expListView = (ExpandableListView) findViewById(R.id.results_expandable_list);
+        final ExpandableListView expListView = (ExpandableListView) findViewById(R.id.results_expandable_list);
 
-        this.resultsExpandableAdapter = new ResultsExpandableAdapter(this);
-        this.expListView.setAdapter(this.resultsExpandableAdapter);
+        final ResultsExpandableAdapter resultsExpandableAdapter = new ResultsExpandableAdapter(this);
+        expListView.setAdapter(resultsExpandableAdapter);
     }
 }

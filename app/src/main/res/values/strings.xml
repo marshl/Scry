@@ -41,5 +41,6 @@
     <string name="search_ownership_owned_text">Owned</string>
     <string name="search_ownership_not_owned_text">Not Owned</string>
     <string name="search_textfield_hint">Type Here...</string>
+    <string name="no_selected_set_dropdown">No Set Selected</string>
 
 </resources>

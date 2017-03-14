@@ -81,7 +81,7 @@ public class SetListSpinnerAdapter implements SpinnerAdapter {
 
         ScrySet set = (ScrySet) this.getItem(_position);
         if (set == null) {
-            textView.setText("No Set Selected");
+            textView.setText(R.string.no_selected_set_dropdown);
         } else {
             textView.setText(set.name);
         }
