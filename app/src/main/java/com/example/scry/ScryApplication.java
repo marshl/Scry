@@ -243,12 +243,9 @@ public class ScryApplication {
             }
         }
 
-        if (this.ownershipSearch == OWNERSHIP.OWNED && _card.total <= 0
-                || this.ownershipSearch == OWNERSHIP.NOT_OWNED && _card.total > 0) {
-            return false;
-        }
+        return !(this.ownershipSearch == OWNERSHIP.OWNED && _card.total <= 0
+                || this.ownershipSearch == OWNERSHIP.NOT_OWNED && _card.total > 0);
 
-        return true;
     }
 
     public void Reset() {

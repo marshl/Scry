@@ -91,7 +91,6 @@ public class ScryXmlParser {
             } else if (name.equals("r")) {
                 // Add newlines
                 card.rules = this.readText(_parser).replace("~", "<br>");
-                ;
             } else if (name.equals("sets")) {
                 this.readCardSets(_parser, card);
             } else if (name.equals("wm")) {
@@ -197,7 +196,7 @@ public class ScryXmlParser {
         }
     }
 
-    private void readFormat(XmlPullParser _parser) throws XmlPullParserException, IOException, Exception {
+    private void readFormat(XmlPullParser _parser) throws Exception {
         ScryFormat format = new ScryFormat();
         while (_parser.next() != XmlPullParser.END_TAG) {
             if (_parser.getEventType() != XmlPullParser.START_TAG) {
@@ -225,7 +224,7 @@ public class ScryXmlParser {
         ScryApplication.instance.formatList.add(format);
     }
 
-    private ScrySet readFormatSet(XmlPullParser _parser) throws XmlPullParserException, IOException, Exception {
+    private ScrySet readFormatSet(XmlPullParser _parser) throws Exception {
         ScrySet set = new ScrySet();
         while (_parser.next() != XmlPullParser.END_TAG) {
             if (_parser.getEventType() != XmlPullParser.START_TAG) {
