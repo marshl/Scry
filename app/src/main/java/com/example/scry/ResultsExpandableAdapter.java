@@ -150,16 +150,21 @@ public class ResultsExpandableAdapter extends BaseExpandableListAdapter {
         }
 
         TextView textView = (TextView) _convertView.findViewById(R.id.results_group_cardname);
-        textView.setText(oracleCard.name);
+        StringBuilder strbldr = new StringBuilder();
+        if (oracleCard.total > 0) {
+            strbldr.append(oracleCard.total);
+            strbldr.append("x ");
+        }
+        strbldr.append(oracleCard.name);
+        textView.setText(strbldr.toString());
 
         textView = (TextView) _convertView.findViewById(R.id.results_group_cost);
         StringBuilder strBldr = new StringBuilder();
         if (oracleCard.cost != null) {
             strBldr.append(this.replaceMTGSymbols(oracleCard.cost));
         }
-        //strBldr.append( " (" ).append( oracleCard.cmc ).append( ')' );
+
         textView.setText(Html.fromHtml(strBldr.toString(), this.scryImageGetter, null));
-        //textView.setText( strBldr.toString() );
         return _convertView;
     }
 
