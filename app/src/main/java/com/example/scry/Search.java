@@ -79,6 +79,18 @@ public class Search extends Activity {
             imageButton.setOnLongClickListener(longClickListener);
         }
 
+        EditText searchTextView = (EditText) findViewById(R.id.searchEditText);
+        searchTextView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                    onSearchButtonDown(null);
+                    return true;
+                }
+                return false;
+            }
+        });
+
         this.applySearchSettings();
     }
 
